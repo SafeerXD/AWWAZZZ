@@ -1,0 +1,553 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: white;
+    
+}
+
+/* Navbar Styling */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: rgba(255, 255, 255, 0.7); /* White with transparency */
+    backdrop-filter: blur(10px); /* Glassmorphism effect */
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    z-index: 2;
+    transition: background-color 0.3s ease;
+}
+
+.navbar .logo h1 {
+    font-size: 24px;
+    color: #0c3f03;
+}
+
+.navbar .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.navbar .nav-links li {
+    font-size: 18px;
+}
+
+.navbar .nav-links a {
+    color: #333;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar .nav-links a:hover {
+    background-color: #d4af37; /* Gold accent */
+    color: white;
+}
+
+/* Menu toggle styling */
+.menu-toggle {
+    display: none; /* Initially hidden for larger screens */
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    transition: 0.3s ease;
+}
+
+/* Navbar for mobile */
+.nav-links {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    list-style: none;
+    transition: all 0.3s ease-in-out;
+}
+
+/* For mobile view: initially hidden */
+.nav-links.hidden {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px; /* Below the navbar */
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+    border-radius: 0 0 5px 5px;
+    z-index: 1000;
+}
+
+/* Show navbar links when toggled */
+.nav-links.show {
+    display: flex;
+}
+
+/* Header Styling */
+.header {
+    padding-top: 140px; /* Pushes the header down from the navbar */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px; /* Adjust based on your preference */
+}
+
+/* Header Shape */
+.header-shape {
+    width: 80%; /* Makes the shape responsive */
+    height: 250px; /* Shape height */
+    background-color: #2b4e16; /* Light green */
+    border-radius: 10px; /* Rounded corners */
+    z-index: 1; /* Ensure the content stays on top of the video */
+    height: 100%; /* Full height to ensure the header occupies the full screen */
+    overflow: hidden; /* Prevent video from overflowing */
+    position: relative; /* To help with positioning the video inside */
+}
+
+/* Video Clip Inside the Header */
+#header-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Make video fill the container */
+    height: 100%; /* Make video fill the container */
+    object-fit: cover; /* Maintain the aspect ratio and cover the space */
+    z-index: -1; /* Place the video behind the text and other elements */
+    clip-path: inset(0 round 10px); /* Ensure video fits inside rounded corners */
+    opacity: 50%;
+}
+
+
+.header-text {
+    text-align: center; /* Aligns text to the center */
+    color: #d4af37;
+    margin-top: 44px;
+}
+
+.header-text h1 {
+    font-size: 60px; /* Adjust size as needed */
+    font-weight: bolder;
+}
+
+.header-text p {
+    font-size: 16px; /* Smaller font size for the sentence */
+    font-weight: lighter;
+    color: rgb(201, 255, 201);
+    letter-spacing: 2px;
+    margin-top: 10px;
+}
+
+.header .Booking {
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    margin-top: 30px;
+    text-align: center;
+}
+
+/* Updated Modal Styles */
+.header-shape .Booking .modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent background */
+    justify-content: center;
+    align-items: center;
+}
+
+.header-shape .Booking .modal-content {
+    background-color: #fff; /* White background for contrast */
+    padding: 30px;
+    border-radius: 15px; /* Smooth rounded corners */
+    width: 400px;
+    max-width: 90%; /* Responsive design */
+    text-align: center;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    animation: scaleUp 0.3s ease-in-out; /* Smooth scaling animation */
+    position: relative;
+}
+
+@keyframes scaleUp {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Close Button */
+.header-shape .Booking .close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.header-shape .Booking .close-btn:hover {
+    color: #d9534f; /* Red for hover effect */
+}
+
+/* Input Fields */
+.header-shape .Booking input[type="text"],
+.header-shape .Booking input[type="email"],
+.header-shape .Booking select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Form Button */
+.header-shape .Booking button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    background-color: #2b4e16;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.header-shape .Booking button[type="submit"]:hover {
+    background-color: #228b22; /* Darker green */
+}
+
+/* Open Modal Button */
+.header-shape .Booking .open-modal-btn {
+    padding: 12px 24px;
+    font-size: 16px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.header-shape .Booking .open-modal-btn:hover {
+    background-color: #218838; /* Darker green for hover */
+}
+
+
+/* About Section Styling */
+.about {
+    padding: 50px 30px;
+    background-color: #f9f9f9; /* Light grey background for the About section */
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-content h2 {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.about-content p {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.6;
+}
+
+
+.services h2 {
+    text-align: center;
+    margin: 20px 0;
+    color: #357806;
+    font-size: 40px;
+  }
+  
+  /* Services Section */
+  .services {
+    padding: 50px;
+  }
+  
+  .services-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .service-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    width: 300px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .service-card h3 {
+    margin-top: 0;
+    color: #4caf50; /* Green color for title */
+  }
+  
+  .service-card p {
+    color: #555;
+    margin-bottom: 0;
+    line-height: 25px;
+  }
+  
+  /* Modal Styles */
+  #service-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+
+  }
+  
+  #service-modal.active {
+    display: flex;
+  }
+  
+  .modal-content {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .modal-content h2 {
+    margin-top: 0;
+    color: #4caf50;
+  }
+  
+  .modal-content p {
+    color: #555;
+  }
+  
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+  }
+  
+  .close:hover {
+    color: #000;
+  }
+
+
+
+
+
+/* Close Button */
+.services .service-card .close-btn {
+    position: absolute;
+    bottom: 90px;
+    right: 15px;
+    font-size: 10px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.services .service-card .close-btn:hover {
+    color: #d9534f; /* Red for hover effect */
+}
+
+/* Input Fields */
+.services .service-card input[type="text"],
+.services .service-card input[type="email"],
+.services .service-card input[type="location"],
+.services .service-card select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Form Button */
+.services .service-card button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    background-color: #2b4e16;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.services .service-card button[type="submit"]:hover {
+    background-color: #228b22; /* Darker green */
+}
+
+/* Open Modal Button */
+.services .service-card .open-modal-btn {
+    padding: 10px 20px;
+    font-size: 10px;
+    letter-spacing: 1px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.services .service-card .open-modal-btn:hover {
+    background-color: #218838; /* Darker green for hover */
+}
+
+/* Contact Us Section Styling */
+.contact {
+    padding: 50px 30px;
+    background-color: #f5f5f5; /* Light background for contact section */
+    text-align: center;
+}
+
+.contact h2 {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 40px;
+}
+
+.contact-info p {
+    font-size: 18px;
+    color: #555;
+    margin: 10px 0;
+}
+
+/* Footer Section Styling */
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer p {
+    font-size: 16px;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 768px) {
+    .navbar .nav-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .services-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .header-text h1 {
+        font-size: 40px;
+    }
+
+    .service-card {
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar .logo h1 {
+        font-size: 18px;
+    }
+
+    .header-text h1 {
+        font-size: 30px;
+    }
+
+    .about-content h2 {
+        font-size: 24px;
+    }
+
+    .about-content p {
+        font-size: 14px;
+    }
+}
+/* Responsive rules */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex; /* Show hamburger icon on smaller screens */
+    }
+
+    .navbar .nav-links {
+        display: none; /* Hide by default */
+    }
+
+    /* Navbar for mobile */
+    .nav-links {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        list-style: none;
+        transition: all 0.3s ease-in-out;
+    }
+
+    /* For mobile view: initially hidden */
+    .nav-links.hidden {
+        display: none; /* This hides the nav-links */
+    }
+
+    /* Show navbar links when toggled */
+    .nav-links.show {
+        display: flex;
+    }
+
+}
