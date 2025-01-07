@@ -9,7 +9,9 @@
 body {
     font-family: 'Arial', sans-serif;
     background-color: white;
-    
+    overflow-x: hidden;
+    height: 100%;
+    width: 100%;
 }
 
 /* Navbar Styling */
@@ -18,9 +20,9 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: flex; /* Aligns elements in a row */
+    justify-content: space-between; /* Space between logo and nav links */
+    align-items: center; /* Vertically centers items */
     padding: 15px 30px;
     background-color: rgba(255, 255, 255, 0.7); /* White with transparency */
     backdrop-filter: blur(10px); /* Glassmorphism effect */
@@ -29,22 +31,35 @@ body {
     transition: background-color 0.3s ease;
 }
 
-.navbar .logo h1 {
+.logo {
+    display: flex; /* Aligns the logo text and image in a row */
+    align-items: center;
+    gap: 10px; /* Space between the logo text and image */
+}
+
+.logo h1 {
     font-size: 24px;
     color: #0c3f03;
+    margin: 0; /* Removes extra margin */
 }
 
-.navbar .nav-links {
+.logo img {
+    height: 50px;
+}
+
+.nav-links {
     list-style: none;
-    display: flex;
-    gap: 20px;
+    display: flex; /* Aligns nav links in a row */
+    gap: 20px; /* Space between nav links */
+    margin: 0; /* Removes extra margin */
+    padding: 0; /* Removes extra padding */
 }
 
-.navbar .nav-links li {
+.nav-links li {
     font-size: 18px;
 }
 
-.navbar .nav-links a {
+.nav-links a {
     color: #333;
     text-decoration: none;
     padding: 8px 15px;
@@ -52,12 +67,12 @@ body {
     transition: background-color 0.3s ease;
 }
 
-.navbar .nav-links a:hover {
+.nav-links a:hover {
     background-color: #d4af37; /* Gold accent */
     color: white;
 }
 
-/* Menu toggle styling */
+/* Base Styles for the Toggle Bar */
 .menu-toggle {
     display: none; /* Initially hidden for larger screens */
     flex-direction: column;
@@ -69,40 +84,27 @@ body {
     width: 25px;
     height: 3px;
     background-color: #333;
-    transition: 0.3s ease;
+    border-radius: 2px;
+    transition: all 0.3s ease;
 }
 
-/* Navbar for mobile */
-.nav-links {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-    list-style: none;
-    transition: all 0.3s ease-in-out;
+/* Toggle Bar Animation (When Active) */
+.menu-toggle.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg); /* Top bar forms part of the 'X' */
 }
 
-/* For mobile view: initially hidden */
-.nav-links.hidden {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 60px; /* Below the navbar */
-    right: 0;
-    background-color: rgba(255, 255, 255, 0.9);
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 10px 20px;
-    border-radius: 0 0 5px 5px;
-    z-index: 1000;
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0; /* Middle bar disappears */
 }
 
-/* Show navbar links when toggled */
-.nav-links.show {
-    display: flex;
+.menu-toggle.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg); /* Bottom bar forms part of the 'X' */
 }
+
 
 /* Header Styling */
 .header {
-    padding-top: 140px; /* Pushes the header down from the navbar */
+    margin-top: 140px; /* Pushes the header down from the navbar */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -138,7 +140,7 @@ body {
 .header-text {
     text-align: center; /* Aligns text to the center */
     color: #d4af37;
-    margin-top: 44px;
+    margin-top: 150px;
 }
 
 .header-text h1 {
@@ -246,37 +248,41 @@ body {
 
 /* Open Modal Button */
 .header-shape .Booking .open-modal-btn {
-    padding: 12px 24px;
-    font-size: 16px;
-    background-color: #28a745;
-    color: white;
-    border: none;
+    background: transparent;
+    color: #fff;
+    border: 1px solid #d4af37;
     border-radius: 5px;
+    padding: 15px 20px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    font-size: 14px;
 }
 
+
 .header-shape .Booking .open-modal-btn:hover {
-    background-color: #218838; /* Darker green for hover */
+    background-color: rgba(3, 239, 98, 255);
+    color: rgba(5, 25, 45, 255);
+    border: 1px solid rgba(5, 25, 45, 255);
+    transition: all 0.2s ease-in-out;
 }
 
 
 /* About Section Styling */
 .about {
-    padding: 50px 30px;
+    padding: 210px 30px;
     background-color: #f9f9f9; /* Light grey background for the About section */
 }
 
 .about-content {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
-    text-align: center;
+    text-align: justify;
 }
 
 .about-content h2 {
     font-size: 36px;
     color: #333;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .about-content p {
@@ -452,6 +458,73 @@ body {
     background-color: #218838; /* Darker green for hover */
 }
 
+.how-handy-works h2 {
+    position: relative;
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 30px;
+    display: inline-block;
+  }
+  
+  .how-handy-works h2::before,
+  .how-handy-works h2::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 50px; /* Adjust line length */
+    height: 2px; /* Adjust line thickness */
+    background-color: #ccc; /* Line color */
+  }
+  
+  .how-handy-works h2::before {
+    left: -70px; /* Adjust distance from text */
+  }
+  
+  .how-handy-works h2::after {
+    right: -70px; /* Adjust distance from text */
+  }
+
+.how-handy-works {
+    text-align: center;
+    padding: 50px 20px;
+  }
+  
+  .how-handy-works h2 {
+    font-size: 2em;
+    margin-bottom: 30px;
+    color: #333;
+  }
+  
+  .steps-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  
+  .step {
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+  }
+  .step img {
+    width: 50px;
+    margin-bottom: 50px;
+
+  }
+  
+  .step h4 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #285c2a;
+    font-weight: lighter;
+  }
+  
+  .step p {
+    font-size: 1rem;
+    color: #444;
+    line-height: 1.6;
+  }
 /* Contact Us Section Styling */
 .contact {
     padding: 50px 30px;
@@ -470,7 +543,17 @@ body {
     color: #555;
     margin: 10px 0;
 }
-
+.contact iframe {
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 400px;
+    border: 40px solid #d4af37;
+    border-radius: 15px;
+    margin: 10px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    filter: invert(20%);
+}
 /* Footer Section Styling */
 .footer {
     background-color: #333;
@@ -484,7 +567,69 @@ body {
 }
 
 /* Responsive Media Queries */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
+    /* Show toggle bar on smaller screens */
+    .menu-toggle {
+        display: flex;
+    }
+
+    /* Hide nav-links by default */
+    .navbar .nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        position: absolute;
+        top: 60px; /* Positioned below the navbar */
+        right: 20px;
+        background-color: rgba(255, 255, 255, 0.9);
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 10px 20px;
+        border-radius: 5px;
+        z-index: 1000;
+    }
+
+    /* Show nav-links when toggled */
+    .navbar .nav-links.show {
+        display: flex;
+    }
+    /* For mobile view: initially hidden */
+    .nav-links.hidden {
+        display: none; /* This hides the nav-links */
+    }
+
+}
+    
+    
+
+@media screen and (max-width: 480px) {
+    body,html {
+        overflow-x: hidden;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width:100%;
+        
+    }
+    .navbar .logo h1 {
+        font-size: 18px;
+        font-weight: bold;
+    }
+    .navbar .logo img {
+        height: 30px;
+    }
+
+    .header-text h1 {
+        font-size: 30px;
+    }
+
+    .about-content h2 {
+        font-size: 24px;
+    }
+
+    .about-content p {
+        font-size: 14px;
+    }
+
     .navbar .nav-links {
         flex-direction: column;
         gap: 10px;
@@ -501,53 +646,17 @@ body {
 
     .service-card {
         width: 100%;
+        padding: 20px;
     }
-}
-
-@media (max-width: 480px) {
-    .navbar .logo h1 {
-        font-size: 18px;
+    .contact iframe {
+        align-items: center;
+        justify-content: center;
+        width: 250px;
+        height: 250px;
+        border: 40px solid #d4af37;
+        border-radius: 15px;
+        margin: 10px 0;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        filter: invert(20%);
     }
-
-    .header-text h1 {
-        font-size: 30px;
-    }
-
-    .about-content h2 {
-        font-size: 24px;
-    }
-
-    .about-content p {
-        font-size: 14px;
-    }
-}
-/* Responsive rules */
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: flex; /* Show hamburger icon on smaller screens */
-    }
-
-    .navbar .nav-links {
-        display: none; /* Hide by default */
-    }
-
-    /* Navbar for mobile */
-    .nav-links {
-        display: flex;
-        flex-direction: row;
-        gap: 20px;
-        list-style: none;
-        transition: all 0.3s ease-in-out;
-    }
-
-    /* For mobile view: initially hidden */
-    .nav-links.hidden {
-        display: none; /* This hides the nav-links */
-    }
-
-    /* Show navbar links when toggled */
-    .nav-links.show {
-        display: flex;
-    }
-
 }
