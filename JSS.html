@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWWAZZZ</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <link rel="stylesheet" href="swiper-bundle.min.css">
+</head>
+<body>
+    <nav class="navbar" data-aos="fade-down">
+        <div class="logo">
+            <h1>AWWAZZZ</h1>
+            <img src="AWWAZZZ.png" alt="AWWAZZZ Logo" height="50px">
+        </div>
+        <div class="menu-toggle" id="menu-toggle">
+            <!-- Hamburger icon -->
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#header">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+            
+        </ul>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="header" id="header">
+        <div class="header-shape">
+            <video autoplay muted loop id="header-video">
+                <source src="clip.mp4" type="video/mp4">
+            </video>
+            <div class="header-text">
+                <h1>AWWAZZZ</h1>
+                <p>"Your Trusted Partner for Home and Office Solutions"</p>
+            </div>
+            <div class="Booking">
+                <!-- Buttons or Cards that trigger the popup -->
+                <button class="open-modal-btn" onclick="openModal('form1')">Request Service</button>
+
+                <!-- Modal Popup (Form) -->
+                <div class="modal" id="form1">
+                    <div class="modal-content">
+                        <span class="close-btn" onclick="closeModal('form1')">&times;</span>
+                        <h2>Request Service</h2>
+                        <form action="https://formspree.io/f/xyzyqppj" method="POST">
+                            <label for="name">Name:</label>
+                            <input type="text" id="name" name="name" required><br>
+
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required>
+
+                            <label for="location">Location:</label>
+                            <input type="text" id="location" name="location" required><br>
+
+                            <label for="service">Service Needed:</label>
+                            <select id="service" name="service">
+                                <option value="Plumbing">Plumbing</option>
+                                <option value="Electrical Repairs">Electrical Repairs</option>
+                                <option value="AC Servicing">AC Servicing</option>
+                                <option value="Carpentry">Carpentry</option>
+                                <option value="Painting">Painting</option>
+                                <option value="Cleaning Services">Cleaning Services</option>
+                            </select><br>
+
+                            <label for="describtion">service describtion</label>
+                            <input type="text" id="text" name="text" required>
+                            <br>
+
+                            <button type="submit">Submit</button>
+                                <p>**cash on deliery only**</p>
+
+                            <!-- <p>payment method: cash on delivary </p> -->
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <br>
+
+    <section class="about" id="about">
+        <div class="about-content">
+            <h2>Welcome to AWWAZZZ Services & Solutions</h2>
+            <p>Welcome to JSS Entrepreneurs Services solutions named as AWWAZZZ—your one-stop solution for home and office maintenance, repairs, and cleaning services in Riyadh! We understand how life’s little hassles, like a dripping faucet, a broken AC, or a cluttered space, can disrupt your day.</p>
+            <br>
+            <p>That’s why we’re here—to make your life easier, one task at a time.</p>   
+            <br>
+            <p>Our team of skilled professionals is dedicated to tackling all your needs, from plumbing, electrical repairs, and carpentry to painting, AC maintenance, and deep cleaning. Whether you’re looking to freshen up your living space, fix a problem, or just get everything sparkling clean, we’re just a call away.
+            At JSS, we don’t just work for you—we work with you.</p> 
+            <br>
+            <p>Our goal is to provide reliable, affordable, and high-quality services with a personal touch. Every home and office deserves to be a comfortable, clean, and functional space, and we’re here to make that happen for you.
+            So, let us handle the mess, the fixes, and the upgrades while you sit back and relax. With AWWAZZZ, your satisfaction isn’t just a goal—it’s our guarantee.</p>
+        </div>
+    </section>
+
+    <div class="CTA">
+      <div class="CTA-content">
+        <h3>we have over 400+ users and counting </h3>
+      </div>
+
+
+    </div>
+
+    <br>
+
+    <!-- Servicels Section -->
+    
+    <section class="services" id="services">
+        <h2>Our Services</h2>
+        <div class="services-container">
+            <!-- Card 1 -->
+            <div class="service-card" onclick="openServiceModal('Plumbing')">
+            <h3>Plumbing</h3>
+            <p>From fixing dripping taps and clogged drains to installing modern fixtures, we take care of all your plumbing needs at a price that won’t drain your wallet.</p>
+            <br>
+            <br>
+        </div>
+      
+            <!-- Card 2 -->
+            <div class="service-card" onclick="openServiceModal('Electrical Repairs')">
+                <h3>Electrical Repairs</h3>
+                <p>Safe and affordable electrical solutions, including wiring, appliance repairs, and troubleshooting faulty systems.</p>
+            </div>
+        
+            <!-- Card 3 -->
+            <div class="service-card" onclick="openServiceModal('AC Servicing')">
+                <h3>AC Servicing</h3>
+                <p>Cost-effective maintenance and repairs to keep your AC running smoothly, ensuring your home stays cool without breaking the bank.</p>
+            </div>
+            
+            <!-- Card 4 -->
+            <div class="service-card" onclick="openServiceModal('Carpentry')">
+                <h3>Carpentry</h3>
+                <p>Affordable carpentry services, including furniture repairs and installations, that bring value and beauty to your home or office.</p>
+            </div>
+            
+             <!-- Card 5 -->
+             <div class="service-card" onclick="openServiceModal('Painting')">
+                <h3>Painting</h3>
+                <p>Budget-friendly painting services to refresh your home or office with vibrant, long-lasting colors.</p>
+            </div>
+
+             <!-- Card 6 -->
+             <div class="service-card" onclick="openServiceModal('Cleaning Services')">
+                <h3>Cleaning Services</h3>
+                <p>Deep cleaning services for homes and offices that are both thorough and affordable, leaving your space spotless and fresh.</p>
+            </div>
+        
+        </div>
+    </section>
+
+
+    <!-- Modal -->
+    <div id="service-modal">
+        <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2 id="modal-service-title">Service Title</h2>
+        <p id="modal-service-description">Detailed description of the service will appear here.</p>
+        </div>
+    </div>
+
+    <section class="how-handy-works" data-aos="zoom-in">
+        <h2>How AWWAZZZ Works</h2>
+        <div class="steps-container">
+          <div class="step">
+            <img src="images/calendar.svg" alt="Calendar Icon" >
+            <h4>Set Up a Cleaning Plan</h4>
+            <p>Choose whenever you want to service your home. You can schedule your recurring services to make things easy - don’t worry, you can always reschedule, if things change.</p>
+          </div>
+          <div class="step">
+            <img src="images/mobile-notch.svg" alt="Manage Online Icon">
+            <h4>Manage Everything Online</h4>
+            <p>Rescheduling, contacting your professional, and managing are just a tap away.</p>
+          </div>
+          <div class="step">
+            <img src="images/user.svg" alt="Relax Icon">
+            <h4>Sit Back and Relax</h4>
+            <p>An experienced, fully-equipped housekeeping professional will be there on time.</p>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- testimonial section -->
+      <section class="container">
+        <div class="testimonial mySwiper">
+          <h2>"What Customers Say about us"</h2>
+          <div class="testi-content swiper-wrapper">
+            <div class="slide swiper-slide">
+              <img src="images/young-muslim-woman.jpg" alt="" class="image" />
+              <p>
+                thank you so much...
+              </p>
+              <i class="bx bxs-quote-alt-left quote-icon"></i>
+              <div class="details">
+                <span class="name">Aaliyah bint Khalid Al-Rashid</span>
+                <span class="job">Web Designer</span>
+              </div>
+            </div>
+            <div class="slide swiper-slide">
+              <img src="images/young-muslim-man.jpeg" alt="" class="image" />
+              <p>
+                AWWAZZZ made my work so much easier and more efficient than I could have ever imagined!
+              </p>
+              <i class="bx bxs-quote-alt-left quote-icon"></i>
+              <div class="details">
+                <span class="name">Omar ibn Khalid Al-Farouq</span>
+                <span class="job">Civil engineer</span>
+              </div>
+            </div>
+            <div class="slide swiper-slide">
+              <img src="images/muslim-man.jpg" alt="" class="image" />
+              <p>
+                to those who havent had the opportunity to use AWWAZZZ, I would recommend you to try it out. they are so much efficient and easy to use.
+              </p>
+              <i class="bx bxs-quote-alt-left quote-icon"></i>
+              <div class="details">
+                <span class="name">Yusuf ibn Ahmed Al-Muhairi</span>
+                <span class="job">businessman</span>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-button-next nav-btn"></div>
+          <div class="swiper-button-prev nav-btn"></div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </section>
+      
+    
+    <hr>
+
+    <!-- Contact Us Section -->
+    <section class="contact" id="contact" data-aos="fade-up">
+        <h2>Contact Us</h2>
+        <div class="contact-info">
+            <p><strong>Email:</strong> contact@jss-handyservices.com</p>
+            <p><strong>Phone:</strong> +9660555359562</p><br>
+            <p><strong>Address:</strong> RAWA6903, Abu Bakr Al Siddik, Al Wadi District, Riyadh, 13313 KSA</p>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3450.4081730612475!2d46.67815904694148!3d24.785581835794396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2efcd881496b4f%3A0xbc78758403614210!2zUkFXQTY5MDPYjCA2OTAzINin2KjZiiDYqNmD2LEg2KfZhNi12K_ZitmCINin2YTZgdix2LnZitiMIDI0OTfYjCDYrdmKINin2YTZiNin2K_ZiiwgUml5YWRoIDEzMzEzLCBTYXVkaSBBcmFiaWE!5e0!3m2!1sen!2sbd!4v1736257921381!5m2!1sen!2sbd" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <p>&copy; 2024 JSS Entrepreneurs Limited. All rights reserved.</p>
+    </footer>
+
+    <script src="swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
